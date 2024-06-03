@@ -55,7 +55,14 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
+translations = {
+    "幫我": "Help me",
+    "改成": "Change to",
+    "英翻中的小字典": "English to Chinese mini dictionary"
+}
+translated_msg = " ".join([translations.get(word, word) for word in msg.split()])
+line_bot_api.reply_message(event.reply_token, TextSendMessage(translated_msg))
+
         
 
 @handler.add(PostbackEvent)
