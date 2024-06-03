@@ -101,7 +101,7 @@ def handle_message(event):
         }
     }
     
-    if msg == '輸入英翻中':
+    if msg == '英翻中':
         line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的英文"))
     elif msg in questions_answers['英翻中'] or msg in questions_answers['心理']:
         if msg in questions_answers['英翻中']:
