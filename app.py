@@ -100,12 +100,14 @@ def handle_message(event):
         "還有什麼你認為我應該知道的嗎？": "我有時覺得自己不夠好，這影響了我的自信心。"
     }
 }
-    if msg in questions_answers:
-        #print(f"{english_word} 的中文翻譯是：{words_dict[english_word]}")
-    
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(questions_answers[msg]))
+    if msg in questions_answers['英翻中'] or msg in questions_answers['心理']:
+    if msg in questions_answers['英翻中']:
+        reply = questions_answers['英翻中'][msg]
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
+        reply = questions_answers['心理'][msg]
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
+else:
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
 
         
 
