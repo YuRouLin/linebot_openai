@@ -101,13 +101,13 @@ def handle_message(event):
     }
 }
     if msg in questions_answers['英翻中'] or msg in questions_answers['心理']:
-    if msg in questions_answers['英翻中']:
-        reply = questions_answers['英翻中'][msg]
+        if msg in questions_answers['英翻中']:
+            reply = questions_answers['英翻中'][msg]
+        else:
+            reply = questions_answers['心理'][msg]
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
     else:
-        reply = questions_answers['心理'][msg]
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
-else:
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
 
         
 
