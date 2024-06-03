@@ -107,8 +107,8 @@ def handle_message(event):
         if msg in questions_answers['英翻中']:
             reply = questions_answers['英翻中'][msg]
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
-if msg == '心理':
-        line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的心理"))
+    if msg == '心理':
+            line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的心理"))
     elif  msg in questions_answers['心理']:
         if msg in questions_answers['心理']:
             reply = questions_answers['心理'][msg]
