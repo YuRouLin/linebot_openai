@@ -55,7 +55,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    questions_answers = {
+
+questions_answers = {
     '英翻中': {
         "apple": "蘋果",
         "banana": "香蕉",
@@ -100,14 +101,18 @@ def handle_message(event):
         "還有什麼你認為我應該知道的嗎？": "我有時覺得自己不夠好，這影響了我的自信心。"
     }
 }
-    if msg in questions_answers['英翻中'] or msg in questions_answers['心理']:
-        if msg in questions_answers['英翻中']:
-            reply = questions_answers['英翻中'][msg]
-        else:
-            reply = questions_answers['心理'][msg]
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
+
+if msg == '輸入英翻中':
+    line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的英文"))
+elif msg in questions_answers['英翻中'] or msg in questions_answers['心理']:
+    if msg in questions_answers['英翻中']:
+        reply = questions_answers['英翻中'][msg]
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
+        reply = questions_answers['心理'][msg]
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
+else:
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
+
 
         
 
