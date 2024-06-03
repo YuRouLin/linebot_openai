@@ -26,7 +26,13 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
 
-
+def GPT_response(text):
+    # 接收回應
+    response = openai.Completion.create(model="gpt-3.5-turbo-instruct", prompt=text, temperature=0.5, max_tokens=500)
+    print(response)
+    # 重組回應
+    answer = response['choices'][0]['text'].replace('。','')
+    return answer
 
 
 # 監聽所有來自 /callback 的 Post Request
@@ -106,8 +112,6 @@ def handle_message(event):
         
 
 @handler.add(PostbackEvent)
-def handle_message(event):
-    print(event.postback.data)
 
 
 @handler.add(MemberJoinedEvent)
