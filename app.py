@@ -103,14 +103,16 @@ def handle_message(event):
     
     if msg == '英翻中':
         line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的英文"))
-    elif msg in questions_answers['英翻中'] or msg in questions_answers['心理']:
+    elif msg in questions_answers['英翻中']:
         if msg in questions_answers['英翻中']:
             reply = questions_answers['英翻中'][msg]
-        else:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
+if msg == '心理':
+        line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的心理"))
+    elif  msg in questions_answers['心理']:
+        if msg in questions_answers['心理']:
             reply = questions_answers['心理'][msg]
         line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
-    else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
         
 
 @handler.add(MemberJoinedEvent)
