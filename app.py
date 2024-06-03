@@ -112,7 +112,8 @@ def handle_message(event):
         
 
 @handler.add(PostbackEvent)
-
+def handle_postback(event):
+    print(event.postback.data)
 
 @handler.add(MemberJoinedEvent)
 def welcome(event):
