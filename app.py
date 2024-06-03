@@ -56,6 +56,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     questions_answers = {
+    '英翻中': {
         "apple": "蘋果",
         "banana": "香蕉",
         "cat": "貓",
@@ -85,7 +86,9 @@ def handle_message(event):
         "zebra": "斑馬",
         "bread": "麵包",
         "car": "車",
-        "duck": "鴨子",
+        "duck": "鴨子"
+    },
+    '心理': {
         "你最近的感覺如何？": "我大多數時候感到焦慮和壓力很大。",
         "你能描述一下你目前的心情嗎？": "我經常感到悲傷和沮喪。",
         "你最近經歷過什麼重大生活變化嗎？": "是的，我最近搬到了一個新城市工作。",
@@ -96,6 +99,7 @@ def handle_message(event):
         "你對這次心理輔導有什麼目標？": "我希望學會更好地管理壓力，並提高我的整體幸福感。",
         "還有什麼你認為我應該知道的嗎？": "我有時覺得自己不夠好，這影響了我的自信心。"
     }
+}
     if msg in questions_answers:
         #print(f"{english_word} 的中文翻譯是：{words_dict[english_word]}")
     
