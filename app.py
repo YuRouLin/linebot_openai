@@ -62,16 +62,29 @@ questions_answers = {
         "97": "池恩齊",
         "98": "高國麟",
     },
-    '心理': {
-        "你最近的感覺如何？": "我大多數時候感到焦慮和壓力很大。",
-        "你能描述一下你目前的心情嗎？": "我經常感到悲傷和沮喪。",
-        "你最近經歷過什麼重大生活變化嗎？": "是的，我最近搬到了一個新城市工作。",
-        "你通常如何應對壓力？": "我通常會試圖通過愛好或鍛煉來分散注意力，但這並不總是有效。",
-        "你有可以依靠的支持系統嗎？": "我有幾個可以談心的親密朋友和家人。",
-        "你喜歡做哪些活動？": "我喜歡閱讀、遠足和畫畫。",
-        "你有注意到你的睡眠模式有變化嗎？": "是的，我最近一直很難入睡和保持睡眠。",
-        "你對這次心理輔導有什麼目標？": "我希望學會更好地管理壓力，並提高我的整體幸福感。",
-        "還有什麼你認為我應該知道的嗎？": "我有時覺得自己不夠好，這影響了我的自信心。"
+    '啦啦隊背號': {
+        "0": "蓁蓁",
+        "1": "寶兒",
+        "6": "奶昔",
+        "7": "朱朱",
+        "10": "Kesha",
+        "15": "丹丹",
+        "20": "傑米",
+        "23": "Tiffany",
+        "24": "秀秀子",
+        "25": "安娜",
+        "28": "卡洛琳",
+        "29": "李雅英",
+        "37": "慈妹",
+        "51": "李皓禎",
+        "58": "大頭",
+        "64": "東東",
+        "66": "Jessy",
+        "77": "維心",
+        "90": "栗子",
+        "97": "沁沁",
+        "6": "南珉貞",
+        "100": "檸檬",
     }
 }
 
@@ -100,9 +113,9 @@ def handle_message(event):
     elif msg == '球員':
         user_state[user_id] = '球員背號'
         line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的球員背號"))
-    elif msg == '心理':
-        user_state[user_id] = '心理'
-        line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的心理"))
+    elif msg == '啦啦隊':
+        user_state[user_id] = '啦啦隊背號'
+        line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的啦啦隊背號"))
     else:
         current_state = user_state[user_id]
         if current_state and msg in questions_answers[current_state]:
