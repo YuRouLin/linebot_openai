@@ -92,7 +92,7 @@ def handle_message(event):
             reply = questions_answers[current_state][msg]
             line_bot_api.reply_message(event.reply_token, TextSendMessage(reply))
         else:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage("未找到相關答案，請重新輸入"))
+            line_bot_api.reply_message(event.reply_token, TextSendMessage("未找到相關答案，請重新輸入相對應的關鍵字"))
 
 @handler.add(MemberJoinedEvent)
 def welcome(event):
