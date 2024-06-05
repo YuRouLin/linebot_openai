@@ -15,37 +15,52 @@ handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 user_state = {}
 
 questions_answers = {
-    '英翻中': {
-        "apple": "蘋果",
-        "banana": "香蕉",
-        "cat": "貓",
-        "dog": "狗",
-        "elephant": "大象",
-        "flower": "花",
-        "guitar": "吉他",
-        "house": "房子",
-        "ice": "冰",
-        "tiger": "虎",
-        "jacket": "夾克",
-        "keyboard": "鍵盤",
-        "lemon": "檸檬",
-        "monkey": "猴子",
-        "notebook": "筆記本",
-        "orange": "橙子",
-        "piano": "鋼琴",
-        "queen": "女王",
-        "rabbit": "兔子",
-        "sun": "太陽",
-        "tree": "樹",
-        "umbrella": "雨傘",
-        "violin": "小提琴",
-        "whale": "鯨魚",
-        "xylophone": "木琴",
-        "yacht": "遊艇",
-        "zebra": "斑馬",
-        "bread": "麵包",
-        "car": "車",
-        "duck": "鴨子"
+    '球員背號': {
+        "0": "道鉑戈",
+        "1": "林哲瑄",
+        "2": "林澤彬",
+        "3": "王勝偉",
+        "5": "王念好",
+        "6": "葉子霆",
+        "7": "陳真",
+        "10": "姚冠瑋",
+        "11": "蔣智賢",
+        "12": "江國豪",
+        "14": "王苡丞",
+        "18": "黃保羅",
+        "21": "藍愷青",
+        "22": "李宗賢",
+        "23": "布藍登",
+        "24": "戈威士",
+        "25": "賴智垣",
+        "29": "申皓瑋",
+        "34": "王蔚永",
+        "35": "王正棠",
+        "43": "豊瑋",
+        "46": "范國宸",
+        "48": "岳少華",
+        "50": "吳世豪",
+        "54": "李建勳",
+        "57": "歐書誠",
+        "59": "陳冠勳",
+        "60": "曾峻岳",
+        "64": "羅戈",
+        "65": "蔡佳諺",
+        "66": "李東洺",
+        "67": "辛元旭",
+        "69": "張進德",
+        "70": "張瑞麟",
+        "71": "江少慶",
+        "78": "董子恩",
+        "80": "游霆崴",
+        "81": "陳仕朋",
+        "82": "孔念恩",
+        "83": "張宥鈞",
+        "85": "劉俊豪",
+        "87": "富藍戈",
+        "95": "戴培峰",
+        "97": "池恩齊",
+        "98": "高國麟",
     },
     '心理': {
         "你最近的感覺如何？": "我大多數時候感到焦慮和壓力很大。",
@@ -80,9 +95,11 @@ def handle_message(event):
     if user_id not in user_state:
         user_state[user_id] = None
 
-    if msg == '英翻中':
-        user_state[user_id] = '英翻中'
-        line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的英文"))
+    if msg == '球員及啦啦隊介紹':
+        line_bot_api.reply_message(event.reply_token, TextSendMessage("想查詢球員還是啦啦隊?"))
+    elif msg == '球員':
+        user_state[user_id] = '球員背號'
+        line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的球員背號"))
     elif msg == '心理':
         user_state[user_id] = '心理'
         line_bot_api.reply_message(event.reply_token, TextSendMessage("請輸入想查詢的心理"))
